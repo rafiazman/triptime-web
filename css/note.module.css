@@ -1,0 +1,84 @@
+.noNote {
+    color: var(--secondary-text-color);
+    font-size: 0.9rem;
+}
+
+
+.notesCard {
+    width: 100%;
+    border-top: 1px var(--trip-orange) dashed;
+    max-height: 20rem;
+    overflow-y: scroll;
+}
+.notesOnMap {
+    width: 100%;
+    border-top: 1px var(--trip-orange) dashed;
+    max-height: 5rem;
+    font-size: 0.7rem!important;
+    overflow-y: scroll;
+}
+
+.notesOnMap div, .notesOnMap p{
+    font-size: 0.7rem!important;
+}
+
+.notesCard button, .notesOnMap button {
+    font-size: 0.8em;
+    width: fit-content;
+    height: 1.5rem;
+    background-color: var(--trip-orange);
+    color: white;
+}
+.notesOnMap img {
+    max-width: 0.7rem!important;
+}
+
+.oneNote {
+    margin: 2px 5px;
+    color: var(--secondary-text-color);
+    line-height: 1em;
+    font-size: 1rem;
+}
+
+.authorField {
+    padding: 5px 0 0 0;
+    color: var(--secondary-text-color);
+    font-size: 0.8rem;
+    line-height: 2em;
+    vertical-align: middle;
+}
+
+.addNoteField {
+    margin: 0.5rem;
+}
+
+.noteInput {
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1em;
+}
+
+.addNoteButton {
+    font-size: 1rem;
+    color: white;
+}
+
+.timeUpdated {
+    font-size: 0.7rem;
+}
+
+.myNoteContainer{
+    border-top: 1px var(--trip-orange) dashed;
+}
+.myNoteContainer > span:first-child{
+    font-size: 0.9rem;
+}
+
+.friendNotes > div+div{
+    border-top: 1px var(--trip-orange) dotted;
+}
+
+.editIcon{
+    max-width: 0.9rem;
+    margin-left: 0.5rem;
+}

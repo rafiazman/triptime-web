@@ -1,0 +1,153 @@
+@media screen and (max-width: 700px) {
+
+    .containerRight, .containerLeft {
+        width: 100vw;
+        height: 100%;
+        position: relative;
+
+    }
+    .introRight, .introLeft {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 40vh;
+        background-color: rgba(256, 256, 256, 0.95);
+        font-size: 4.5vw
+    }
+
+    .introLeft::after, .introRight::after {
+        z-index: 2;
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-bottom: 40vh solid rgba(256, 256, 256, 0.95);
+    }
+
+    .introLeft::after {
+        border-left: 100vw solid transparent;
+    }
+
+    .introRight::after {
+        border-right: 100vw solid transparent;
+    }
+
+    .introRight > div {
+        z-index: 3;
+        position: absolute;
+        width: 20rem;
+        left: 4rem;
+        bottom: 8rem;
+    }
+
+    .introLeft > div {
+        z-index: 3;
+        position: absolute;
+        width: 20rem;
+        right: 4rem;
+        bottom: 8rem;
+    }
+
+    .logo {
+        position: relative;
+        top: 1rem;
+        width: 70vw;
+    }
+    .preview {
+        width: 100vw;
+    }
+
+    .containerLeft form, .containerRight form {
+        position: relative;
+        top: 2rem;
+    }
+
+}
+
+@media screen and (min-width: 700px) {
+    .containerLeft, .containerRight {
+        width: 80vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        font-size: 3vw;
+    }
+
+    .containerLeft {
+        display: grid;
+        grid-template-columns: 36vw 40vw;
+        grid-template-areas: 'preview intro';
+        grid-gap: 4vw;
+    }
+
+    .containerRight {
+        display: grid;
+        grid-template-columns: 40vw 36vw;
+        grid-template-areas: 'intro preview';
+        grid-gap: 4vw;
+    }
+
+    .containerLeft form, .containerRight form {
+        position: relative;
+        top: 2.5rem;
+    }
+
+    .introLeft, .introRight {
+        position: relative;
+        bottom: 3rem;
+    }
+
+    .logo {
+        position: relative;
+        bottom: 2rem;
+    }
+
+}
+
+@media screen and (min-width: 1000px) {
+    .containerLeft, .containerRight {
+        width: 62vw;
+        font-size: 2.5vw;
+    }
+
+    .containerLeft {
+        grid-template-columns: 28vw 30vw;
+        grid-template-areas: 'preview intro';
+        grid-gap: 4vw;
+    }
+
+    .containerRight {
+        grid-template-columns: 30vw 28vw;
+        grid-template-areas: 'intro preview';
+        grid-gap: 4vw;
+    }
+
+}
+
+.containerLeft, .containerRight {
+    color: #333;
+}
+
+.introLeft, .introRight {
+    grid-area: intro;
+}
+
+.preview, .logo {
+    grid-area: preview;
+}
+
+.preview img, .logo img {
+    width: 100%;
+}
+
+.containerLeft h1 {
+    position: relative;
+    left: -0.5rem;
+}
+
+
