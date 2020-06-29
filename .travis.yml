@@ -5,3 +5,8 @@ node_js:
 env:
   global:
     - CYPRESS_INSTALL_BINARY=0
+
+branches:
+  only:
+    - master
+    - develop
