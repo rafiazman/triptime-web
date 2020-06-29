@@ -1,6 +1,6 @@
 <h1 align="center">
     <a href="https://trip-time-develop.herokuapp.com">
-        <img src="/docs/bw_logo_github.png" alt="TripTime" width="200">
+        <img src="https://raw.githubusercontent.com/tantigers/TripTime/master/docs/bw_logo_github.png" alt="TripTime" width="200">
     </a>
     <br>
     TripTime
