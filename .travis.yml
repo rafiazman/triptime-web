@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - lts/*
+
+env:
+  global:
+    - CYPRESS_INSTALL_BINARY=0
