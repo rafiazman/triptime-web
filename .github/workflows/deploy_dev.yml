@@ -12,6 +12,10 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v1
 
+      - name: Generate build UUID
+        id: generate-uuid
+        uses: filipstefansson/uuid-action@v1
+
       - name: Generate deployment package
         run: zip deploy.zip *
 
@@ -22,8 +26,8 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: triptime-web
           environment_name: triptime-web-dev
-          version_label: ${{ github.SHA }}
-          version_description: version at commit SHA ${{ github.SHA }}
+          version_label: ${{ steps.generate-uuid.outputs.uuid }}
+          version_description: 'branch: develop, commit: ${{ github.SHA }}'
           region: ap-southeast-2
           deployment_package: deploy.zip
           wait_for_environment_recovery: 60
