@@ -17,7 +17,7 @@ jobs:
         uses: filipstefansson/uuid-action@v1
 
       - name: Generate deployment package
-        run: zip deploy.zip *
+        run: zip -r deploy.zip .
 
       - name: Deploy to AWS EB
         uses: einaregilsson/beanstalk-deploy@v10
@@ -26,7 +26,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: triptime-web
           environment_name: triptime-web-dev
-          version_label: ${{ steps.generate-uuid.outputs.uuid }}
+          version_label: 'develop-${{ github.SHA }}-${{ steps.generate-uuid.outputs.uuid }}'
           version_description: 'branch: develop, commit: ${{ github.SHA }}'
           region: ap-southeast-2
           deployment_package: deploy.zip
