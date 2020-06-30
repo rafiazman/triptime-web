@@ -9,6 +9,8 @@ class VisitorLandingPage extends React.Component {
   render() {
     return (
       <div className={scrollStyle.container} dir='ltr'>
+        <p>This is a test PR change</p>
+
         <LandingSlide
           alignLeft={true}
           image={'/img/bw_logo_trans.png'}
