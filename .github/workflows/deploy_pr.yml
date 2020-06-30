@@ -39,6 +39,10 @@ jobs:
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
+      - name: Generate build UUID
+        id: generate-uuid
+        uses: filipstefansson/uuid-action@v1
+
       - name: create deployment
         id: create_deployment
         uses: octokit/request-action@v2.x
@@ -72,25 +76,28 @@ jobs:
           ref: ${{ fromJson(steps.get_pull_request_ref.outputs.data).head.ref }}
 
       - name: Generate deployment package
-        run: zip deploy-pr.zip *
+        run: zip -r deploy-pr.zip .
 
-      - name: Deploy to EB
+      - name: Deploy to AWS EB
         uses: einaregilsson/beanstalk-deploy@v10
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: triptime-web
           environment_name: triptime-web-pr
-          version_label: ${{ fromJson(steps.get_pull_request_ref.outputs.data).head.ref }}
+          version_label: ${{ steps.generate-uuid.outputs.uuid }}
+          version_description: 'branch: ${{ fromJson(steps.get_pull_request_ref.outputs.data).head.ref }},
+          commit: ${{ fromJson(steps.get_pull_request_ref.outputs.data).head.sha }}'
           region: ap-southeast-2
           deployment_package: deploy-pr.zip
+          wait_for_environment_recovery: 60
 
-      - name: deploy the pull request
-        run: |
-          # deployment logic goes here
-          sleep 10
-          # instead we randomly succeed or fail the deployment
-          exit $(( $RANDOM % 10 >= 5 ))
+#      - name: deploy the pull request
+#        run: |
+#          # deployment logic goes here
+#          sleep 10
+#          # instead we randomly succeed or fail the deployment
+#          exit $(( $RANDOM % 10 >= 5 ))
 
       - name: set deployment status to success
         id: successful_deployment
