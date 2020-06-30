@@ -43,7 +43,7 @@ jobs:
           ref: develop
           environment: staging
           auto_merge: false
-          required_contexts: []
+          required_contexts: 'build_and_test (14.x)'
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
