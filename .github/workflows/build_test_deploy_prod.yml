@@ -63,7 +63,7 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Generate deployment package
-        run: zip -r deploy.zip .
+        run: zip deploy.zip -r * .[^.]* -x "node_modules/*"
 
       - name: Deploy to AWS EB
         uses: einaregilsson/beanstalk-deploy@v10
