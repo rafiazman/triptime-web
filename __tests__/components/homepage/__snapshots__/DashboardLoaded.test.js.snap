@@ -8,8 +8,7 @@ exports[`Test Dashboard Loaded Check if Dashboard displays TripCards when it is 
     className="content"
   >
     <h1>
-      Tester
-      , good night
+      Good night Tester
     </h1>
     <div
       className="component"

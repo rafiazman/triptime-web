@@ -6,29 +6,30 @@ import PropTypes from 'prop-types';
 export default class Greeting extends React.Component {
   render() {
     const name = this.props.name;
-    const date = new Date();
-    const hour = date.getHours();
+    const hour = new Date().getHours();
 
-    if (hour > 6 && hour < 12)
-      return name ? (
-        <h1>Morning {name}!</h1>
-      ) : (
-        <h1>Good morning and welcome back 🙂</h1>
-      );
-    if (hour < 18)
-      return name ? (
-        <h1>Good afternoon, {name}</h1>
-      ) : (
-        <h1>Good afternoon and welcome back 🙂</h1>
-      );
+    const greetingMessages = {
+      morning: 'Good morning and welcome back.',
+      afternoon: 'Good afternoon and welcome back.',
+      night: 'Welcome back.',
+      nothing_good: 'What are you doing up at this time?',
+    };
+    const namedGreetingMessages = {
+      morning: `Good morning, ${name}.`,
+      afternoon: `Good afternoon, ${name}.`,
+      night: `Good night ${name}`,
+      nothing_good: `What are you doing up at this time, ${name}?`,
+    };
 
-    if (hour < 23)
-      return name ? (
-        <h1>Good evening, {name}</h1>
-      ) : (
-        <h1>Good evening and welcome back 🙂</h1>
-      );
-    else return name ? <h1>{name}, good night</h1> : <h1>Welcome back 🙂</h1>;
+    let key = '';
+
+    if (hour < 6) key = 'nothing_good';
+    else if (hour > 6 && hour < 12) key = 'morning';
+    else if (hour < 18) key = 'afternoon';
+    else key = 'night';
+
+    if (name) return <h1>{namedGreetingMessages[key]}</h1>;
+    else return <h1>{greetingMessages[key]}</h1>;
   }
 }
 
