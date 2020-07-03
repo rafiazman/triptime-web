@@ -11,9 +11,7 @@ import { TripContext } from '../../contexts/TripContext';
 
 export default function TripTimeline() {
   const populateTimeline = (activities, travels, tripID) => {
-    const events = [...activities, ...travels].sort((a, b) =>
-      a.start.localeCompare(b.start),
-    );
+    const events = [...activities, ...travels].sort((a, b) => a.start.localeCompare(b.start));
     let left = true;
     return events.map((event, index) => {
       if (event.type === 'travel')
@@ -27,10 +25,7 @@ export default function TripTimeline() {
       else {
         left = !left;
         return (
-          <div
-            key={index}
-            className={left ? styles.timelineLeft : styles.timelineRight}
-          >
+          <div key={index} className={left ? styles.timelineLeft : styles.timelineRight}>
             <ActivityCard onMap={false} activity={event} onClose={null} />
           </div>
         );
@@ -40,14 +35,7 @@ export default function TripTimeline() {
 
   return (
     <TripContext.Consumer>
-      {({
-        activities,
-        activitiesLoading,
-        travels,
-        travelsLoading,
-        trip,
-        tripLoading,
-      }) => (
+      {({ activities, activitiesLoading, travels, travelsLoading, trip, tripLoading }) => (
         <div className={styles.tripTimelineContainer}>
           <div className={styles.tripTimeline}>
             {activitiesLoading || travelsLoading || tripLoading ? (

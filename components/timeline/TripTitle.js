@@ -25,21 +25,13 @@ export default function TripTitle() {
                   <>
                     <Tooltip
                       component={
-                        <div
-                          className={styles.addButton}
-                          onClick={() => setAdding(true)}
-                        >
+                        <div className={styles.addButton} onClick={() => setAdding(true)}>
                           <FontAwesomeIcon icon={faPlus} />
                         </div>
                       }
                       text={'add new participant'}
                     />
-                    {adding && (
-                      <AddPeopleDialog
-                        tripID={trip.id}
-                        onCancel={() => setAdding(false)}
-                      />
-                    )}
+                    {adding && <AddPeopleDialog tripID={trip.id} onCancel={() => setAdding(false)} />}
                   </>
                 }
               />

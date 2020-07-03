@@ -19,9 +19,7 @@ export default class SignUp extends React.Component {
     };
     return (
       <>
-        {this.state.loading && (
-          <PageLoading message='TripTime is creating an account for you :)' />
-        )}
+        {this.state.loading && <PageLoading message='TripTime is creating an account for you :)' />}
         <AuthContext.Consumer>
           {({
             signup,
@@ -48,9 +46,7 @@ export default class SignUp extends React.Component {
               <div className={styles.regFormContainer}>
                 {errorMessage ? (
                   <div className='failed'>
-                    <p>
-                      Sorry, we failed to create an account for you because:
-                    </p>
+                    <p>Sorry, we failed to create an account for you because:</p>
                     <p>{errorMessage}</p>
                     <p>Please try again:</p>
                   </div>
@@ -85,8 +81,7 @@ export default class SignUp extends React.Component {
                   </label>
                   {emailOccupied && (
                     <div className={styles.invalidAlert}>
-                      Sorry, this email address has been occupied. Try another
-                      one?`
+                      Sorry, this email address has been occupied. Try another one?`
                     </div>
                   )}
                   <label>
@@ -106,9 +101,7 @@ export default class SignUp extends React.Component {
                     />
                   </label>
                   {nameOccupied && (
-                    <div className={styles.invalidAlert}>
-                      Sorry, this nickname has been occupied. Try another one?
-                    </div>
+                    <div className={styles.invalidAlert}>Sorry, this nickname has been occupied. Try another one?</div>
                   )}
                   <label>
                     Create your Password:
@@ -135,16 +128,12 @@ export default class SignUp extends React.Component {
                     />
                   </label>
                   {!passwordConfirmed && (
-                    <div className={styles.invalidAlert}>
-                      Sorry, the two passwords you entered do not match!
-                    </div>
+                    <div className={styles.invalidAlert}>Sorry, the two passwords you entered do not match!</div>
                   )}
                   <input
                     value='Register'
                     type='submit'
-                    disabled={
-                      !passwordConfirmed || emailOccupied || nameOccupied
-                    }
+                    disabled={!passwordConfirmed || emailOccupied || nameOccupied}
                     className={styles.regSubmit}
                   />
                 </form>

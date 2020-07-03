@@ -27,19 +27,13 @@ export default function Index() {
                   </a>
                 </Link>
               </div>
-              <p>
-                TripTime is working hard to make your team trip smoother - More
-                tools to come!
-              </p>
+              <p>TripTime is working hard to make your team trip smoother - More tools to come!</p>
             </div>
           )}
           {!currentUser && (
             <div className={'fit-center'}>
               <Link href={'/login'}>
-                <a onClick={() => setAnchor(`/trip/${tripID}/tools`)}>
-                  {' '}
-                  Log in{' '}
-                </a>
+                <a onClick={() => setAnchor(`/trip/${tripID}/tools`)}> Log in </a>
               </Link>
               to access the tools
             </div>

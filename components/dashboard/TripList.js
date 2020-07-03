@@ -26,10 +26,7 @@ export default class TripList extends React.Component {
             {tripInfoList.map((tripInfo, index) => (
               <Link href={`/trip/${tripInfo.id}`} key={index}>
                 <a>
-                  <TripCard
-                    tripName={tripInfo.name}
-                    updated={tripInfo.updated}
-                  />
+                  <TripCard tripName={tripInfo.name} updated={tripInfo.updated} />
                 </a>
               </Link>
             ))}

@@ -5,22 +5,10 @@ import { Dialog, DialogTitle, DialogContent } from '@material-ui/core';
 import TravelForm from './TravelForm';
 import PropTypes from 'prop-types';
 
-export default function TravelDetailsDialog({
-  open,
-  title,
-  travel,
-  onOk,
-  onCancel,
-}) {
+export default function TravelDetailsDialog({ open, title, travel, onOk, onCancel }) {
   return (
-    <Dialog
-      open={open !== undefined ? open : true}
-      onClose={onCancel}
-      aria-labelledby='travel-dialog-title'
-    >
-      <DialogTitle id='travel-dialog-title'>
-        {title ? title : 'Plan a Travel'}
-      </DialogTitle>
+    <Dialog open={open !== undefined ? open : true} onClose={onCancel} aria-labelledby='travel-dialog-title'>
+      <DialogTitle id='travel-dialog-title'>{title ? title : 'Plan a Travel'}</DialogTitle>
       <DialogContent>
         <TravelForm onOk={onOk} onCancel={onCancel} travel={travel} />
       </DialogContent>

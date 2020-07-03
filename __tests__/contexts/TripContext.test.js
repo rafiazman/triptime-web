@@ -25,18 +25,12 @@ describe('TripContext', () => {
   });
 
   it('TripProvider should fetch the trip, activities and travels based on current trip id upon mounting', async () => {
-    const axiosGetSpy = jest
-      .spyOn(axios, 'get')
-      .mockResolvedValue({ data: { undefined } });
+    const axiosGetSpy = jest.spyOn(axios, 'get').mockResolvedValue({ data: { undefined } });
     await act(async () => {
       renderer.create(<TripProvider />);
     });
-    expect(axiosGetSpy).toBeCalledWith(
-      `${hostName}/api/trip/${tripID}/activities`,
-    );
-    expect(axiosGetSpy).toBeCalledWith(
-      `${hostName}/api/trip/${tripID}/travels`,
-    );
+    expect(axiosGetSpy).toBeCalledWith(`${hostName}/api/trip/${tripID}/activities`);
+    expect(axiosGetSpy).toBeCalledWith(`${hostName}/api/trip/${tripID}/travels`);
     expect(axiosGetSpy).toBeCalledWith(`${hostName}/api/trip/${tripID}`);
     axiosGetSpy.mockRestore();
   });

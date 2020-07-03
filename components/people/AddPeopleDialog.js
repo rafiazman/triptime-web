@@ -24,11 +24,7 @@ export default function AddPeopleDialog({ onCancel, tripID }) {
       .then(res => {
         setUuids(res.data.uuids);
       })
-      .catch(err =>
-        setGetError(
-          err.response.data.message || 'failed to get the invitation links',
-        ),
-      )
+      .catch(err => setGetError(err.response.data.message || 'failed to get the invitation links'))
       .then(() => setIsGetting(false));
   }, []);
 
@@ -39,11 +35,7 @@ export default function AddPeopleDialog({ onCancel, tripID }) {
       .then(res => {
         setUuids([...uuids, res.data.uuid]);
       })
-      .catch(err =>
-        setGenerateError(
-          err.response.data.message || 'failed to generate an invitation link',
-        ),
-      )
+      .catch(err => setGenerateError(err.response.data.message || 'failed to generate an invitation link'))
       .then(() => setIsGenerating(false));
   };
 
@@ -57,30 +49,21 @@ export default function AddPeopleDialog({ onCancel, tripID }) {
           <GetterLoading />
         ) : getError ? (
           <div className={'failed'}>
-            <p>
-              Sorry, we failed to get currently active invitation links because:
-            </p>
+            <p>Sorry, we failed to get currently active invitation links because:</p>
             <p>{getError}</p>
           </div>
         ) : (
           <div className={styles.links}>
             {uuids.length > 0
-              ? uuids.map((uuid, index) => (
-                  <LinkToCopy link={`${appHost}/join/${uuid}`} key={index} />
-                ))
+              ? uuids.map((uuid, index) => <LinkToCopy link={`${appHost}/join/${uuid}`} key={index} />)
               : 'No active link, click the button bellow to generate a new one'}
 
             {isGenerating ? (
               <GeneratorLoading />
             ) : generateError ? (
-              <div>
-                Sorry, failed to generate a link because: {generateError}
-              </div>
+              <div>Sorry, failed to generate a link because: {generateError}</div>
             ) : (
-              <button
-                onClick={() => onClickGenerate()}
-                className={styles.generateButton}
-              >
+              <button onClick={() => onClickGenerate()} className={styles.generateButton}>
                 Generate new link
               </button>
             )}
@@ -100,8 +83,7 @@ AddPeopleDialog.propTypes = {
 function GeneratorLoading() {
   return (
     <div className={styles.generatorLoading}>
-      <ReactLoading type='spinningBubbles' color='#ff4200' width='2rem' />{' '}
-      <p>Generating new invitation link</p>
+      <ReactLoading type='spinningBubbles' color='#ff4200' width='2rem' /> <p>Generating new invitation link</p>
     </div>
   );
 }

@@ -52,9 +52,7 @@ function JoinTrip({ uuid }) {
           setIsProcessing(false);
           setIsRedirecting(true);
           setTimeout(() => {
-            router
-              .push(`/trip/${res.data.trip.id}`)
-              .then(() => setIsRedirecting(false));
+            router.push(`/trip/${res.data.trip.id}`).then(() => setIsRedirecting(false));
           }, 2000);
         })
         .catch(err => {
@@ -67,12 +65,7 @@ function JoinTrip({ uuid }) {
     }
   }, []);
 
-  if (isProcessing)
-    return (
-      <PageLoading
-        message={'Welcome! We are processing your invitation link'}
-      />
-    );
+  if (isProcessing) return <PageLoading message={'Welcome! We are processing your invitation link'} />;
   else if (error)
     return (
       <div
@@ -92,12 +85,7 @@ function JoinTrip({ uuid }) {
         </div>
       </div>
     );
-  else if (isRedirecting)
-    return (
-      <PageLoading
-        message={`Great! We are now redirecting you to trip: ${targetName}`}
-      />
-    );
+  else if (isRedirecting) return <PageLoading message={`Great! We are now redirecting you to trip: ${targetName}`} />;
   else {
     return <div />;
   }

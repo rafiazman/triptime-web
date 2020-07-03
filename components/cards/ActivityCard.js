@@ -5,11 +5,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from '../../css/event-card.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faChevronCircleUp,
-  faChevronCircleDown,
-  faPencilAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { faChevronCircleUp, faChevronCircleDown, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import PeopleList from '../people/PeopleList';
 import TimeDisplay from '../TimeDisplay';
@@ -45,9 +41,7 @@ export default function ActivityCard(props) {
   const handleEdit = (activityPatch, updateOneActivity) => {
     if (checkTimeValid(activityPatch)) {
       setEditProcessing(true);
-      updateOneActivity(activityPatch, activityID).then(() =>
-        setEditProcessing(false),
-      );
+      updateOneActivity(activityPatch, activityID).then(() => setEditProcessing(false));
     } else {
       setTimeErrorDisplay(true);
     }
@@ -85,18 +79,9 @@ export default function ActivityCard(props) {
       <AuthContext.Consumer>
         {({ currentUser }) => {
           return (
-            <div
-              className={styles.eventCard}
-              style={onMap ? { border: '0' } : {}}
-            >
+            <div className={styles.eventCard} style={onMap ? { border: '0' } : {}}>
               {editProcessing || deleteProcessing ? (
-                <UpdateProcessing
-                  message={
-                    deleteProcessing
-                      ? 'Deleting Activity...'
-                      : 'Updating Activity'
-                  }
-                />
+                <UpdateProcessing message={deleteProcessing ? 'Deleting Activity...' : 'Updating Activity'} />
               ) : (
                 <TripContext.Consumer>
                   {({ updateOneActivity, deleteOneActivity }) => {
@@ -109,13 +94,8 @@ export default function ActivityCard(props) {
                           people={activity.people}
                           addComponent={
                             currentUser &&
-                            !activity.people.find(
-                              person => person.id === currentUser.id,
-                            ) && (
-                              <JoinButton
-                                eventType={'activity'}
-                                eventID={activityID}
-                              />
+                            !activity.people.find(person => person.id === currentUser.id) && (
+                              <JoinButton eventType={'activity'} eventID={activityID} />
                             )
                           }
                         />
@@ -126,22 +106,12 @@ export default function ActivityCard(props) {
                             style={{ verticalAlign: 'middle' }}
                             onClick={() => setStartChanging(true)}
                           />
-                          <span
-                            style={{ margin: '0 5px', verticalAlign: 'middle' }}
-                          >
-                            From:
-                          </span>
+                          <span style={{ margin: '0 5px', verticalAlign: 'middle' }}>From:</span>
                           <TimeDisplay time={activity.start} />
                         </div>
 
-                        <div
-                          className={styles.endTime}
-                          onClick={() => setEndChanging(true)}
-                        >
-                          <FontAwesomeIcon
-                            icon={faClock}
-                            style={{ verticalAlign: 'middle' }}
-                          />
+                        <div className={styles.endTime} onClick={() => setEndChanging(true)}>
+                          <FontAwesomeIcon icon={faClock} style={{ verticalAlign: 'middle' }} />
                           <span
                             style={{
                               margin: '0 27px 0px 5px',
@@ -170,9 +140,7 @@ export default function ActivityCard(props) {
                           <DateTimePicker
                             value={activity.end}
                             ampm={false}
-                            onChange={end =>
-                              handleEdit({ end }, updateOneActivity)
-                            }
+                            onChange={end => handleEdit({ end }, updateOneActivity)}
                             open={endChanging}
                             onClose={() => setEndChanging(false)}
                             TextFieldComponent={() => null}
@@ -191,16 +159,11 @@ export default function ActivityCard(props) {
                           />
                         )}
 
-                        <div style={{ margin: '15px 0' }}>
-                          {activity.description}
-                        </div>
+                        <div style={{ margin: '15px 0' }}>{activity.description}</div>
 
                         <div className={styles.options}>
                           <span onClick={() => setEditing(true)}>
-                            <Tooltip
-                              text='Edit'
-                              component={<FontAwesomeIcon icon={faPencilAlt} />}
-                            />
+                            <Tooltip text='Edit' component={<FontAwesomeIcon icon={faPencilAlt} />} />
                           </span>
 
                           {editing && (
@@ -217,26 +180,14 @@ export default function ActivityCard(props) {
 
                           <span onClick={() => toggleNotes()}>
                             {notePopped ? (
-                              <Tooltip
-                                text={'Hide Notes'}
-                                component={
-                                  <FontAwesomeIcon icon={faChevronCircleUp} />
-                                }
-                              />
+                              <Tooltip text={'Hide Notes'} component={<FontAwesomeIcon icon={faChevronCircleUp} />} />
                             ) : (
-                              <Tooltip
-                                text={'Show Notes'}
-                                component={
-                                  <FontAwesomeIcon icon={faChevronCircleDown} />
-                                }
-                              />
+                              <Tooltip text={'Show Notes'} component={<FontAwesomeIcon icon={faChevronCircleDown} />} />
                             )}
                           </span>
                           <DeleteActivityButton
                             activityId={activity.id}
-                            onDelete={activityID =>
-                              handleDelete(deleteOneActivity)(activityID)
-                            }
+                            onDelete={activityID => handleDelete(deleteOneActivity)(activityID)}
                           />
                         </div>
                       </div>

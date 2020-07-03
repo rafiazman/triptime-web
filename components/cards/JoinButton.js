@@ -20,10 +20,7 @@ export default function JoinButton({ eventType, eventID }) {
         <Tooltip
           text={`Click to join the ${eventType}`}
           component={
-            <button
-              onClick={() => clickJoin(handleJoin)}
-              className={'people-button'}
-            >
+            <button onClick={() => clickJoin(handleJoin)} className={'people-button'}>
               Join
             </button>
           }

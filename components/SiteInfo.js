@@ -2,11 +2,7 @@
 import React from 'react';
 import infoStyles from '../css/site-info.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faGithub,
-  faYoutube,
-  faFacebook,
-} from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faYoutube, faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 class SiteInfo extends React.Component {
   render() {
@@ -15,11 +11,7 @@ class SiteInfo extends React.Component {
         <div className={infoStyles.content}>
           <h1>
             <span className='logo-span'>
-              <img
-                className={infoStyles.logo}
-                src='/img/logo.svg'
-                alt='TripTime logo'
-              />
+              <img className={infoStyles.logo} src='/img/logo.svg' alt='TripTime logo' />
               <span>TripTime</span>
             </span>
           </h1>
@@ -54,9 +46,7 @@ class SiteInfo extends React.Component {
               </a>
             </div>
           </div>
-          <p className={infoStyles.copyright}>
-            &#169;2020 TripTime All Rights Reserved.
-          </p>
+          <p className={infoStyles.copyright}>&#169;2020 TripTime All Rights Reserved.</p>
         </div>
       </div>
     );

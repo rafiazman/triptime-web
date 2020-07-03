@@ -7,9 +7,7 @@ import renderer, { act } from 'react-test-renderer';
 
 describe('AuthContext', () => {
   it('AuthProvider should fetch the current user upon mounting', async () => {
-    const axiosGetSpy = jest
-      .spyOn(axios, 'get')
-      .mockResolvedValue({ data: { undefined } });
+    const axiosGetSpy = jest.spyOn(axios, 'get').mockResolvedValue({ data: { undefined } });
     await act(async () => {
       renderer.create(<AuthProvider />);
     });

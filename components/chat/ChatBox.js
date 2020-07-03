@@ -42,14 +42,12 @@ export default class ChatBox extends React.Component {
     });
 
     // Listen to private channel named "messages.trip.1"
-    window.laravelEcho
-      .private(`messages.trip.${tripId}`)
-      .listen('NewMessage', e => {
-        this.setState(state => ({
-          unreadCount: state.unreadCount + 1,
-        }));
-        this.handleIncomingNewMessages(e.message);
-      });
+    window.laravelEcho.private(`messages.trip.${tripId}`).listen('NewMessage', e => {
+      this.setState(state => ({
+        unreadCount: state.unreadCount + 1,
+      }));
+      this.handleIncomingNewMessages(e.message);
+    });
   }
 
   togglePop() {
@@ -84,11 +82,7 @@ export default class ChatBox extends React.Component {
     const popUp = this.state.popUp;
     return (
       <div className={styles.chatBox}>
-        <div
-          className={styles.chatBoxHead}
-          style={headBackgroundStyle}
-          onClick={() => this.togglePop()}
-        >
+        <div className={styles.chatBoxHead} style={headBackgroundStyle} onClick={() => this.togglePop()}>
           {alerting ? (
             <div className={styles.chatBoxHeadAlert}>
               <FontAwesomeIcon icon={faComment} /> {this.state.unreadCount}
@@ -99,14 +93,8 @@ export default class ChatBox extends React.Component {
         </div>
         {this.state.popUp && (
           <div className={styles.chatBoxBody}>
-            <ChatMessageList
-              messages={this.state.messages}
-              userID={this.getCurrentUser().id}
-            />
-            <ChatInputForm
-              newMessageHandler={this.handleMyNewMessage}
-              me={this.getCurrentUser()}
-            />
+            <ChatMessageList messages={this.state.messages} userID={this.getCurrentUser().id} />
+            <ChatInputForm newMessageHandler={this.handleMyNewMessage} me={this.getCurrentUser()} />
           </div>
         )}
       </div>

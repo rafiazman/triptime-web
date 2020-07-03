@@ -36,17 +36,11 @@ export default function DeleteTravelButton(props) {
         <Tooltip text='Delete' component={<FontAwesomeIcon icon={faTrash} />} />
       </span>
 
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='delete-activity-dialog'
-      >
+      <Dialog open={open} onClose={handleClose} aria-labelledby='delete-activity-dialog'>
         <DialogTitle id='delete-activity-dialog'>Delete Travel</DialogTitle>
 
         <DialogContent>
-          <DialogContentText>
-            Are you sure you want to delete this travel?
-          </DialogContentText>
+          <DialogContentText>Are you sure you want to delete this travel?</DialogContentText>
         </DialogContent>
 
         <DialogActions>

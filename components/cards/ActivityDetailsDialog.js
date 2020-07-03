@@ -5,22 +5,10 @@ import { Dialog, DialogTitle, DialogContent } from '@material-ui/core';
 import ActivityForm from './ActivityForm';
 import PropTypes from 'prop-types';
 
-export default function ActivityDetailsDialog({
-  open,
-  title,
-  activity,
-  onOk,
-  onCancel,
-}) {
+export default function ActivityDetailsDialog({ open, title, activity, onOk, onCancel }) {
   return (
-    <Dialog
-      open={open !== undefined ? open : true}
-      onClose={onCancel}
-      aria-labelledby='activity-dialog-title'
-    >
-      <DialogTitle id='activity-dialog-title'>
-        {title ? title : 'Plan an Activity'}
-      </DialogTitle>
+    <Dialog open={open !== undefined ? open : true} onClose={onCancel} aria-labelledby='activity-dialog-title'>
+      <DialogTitle id='activity-dialog-title'>{title ? title : 'Plan an Activity'}</DialogTitle>
       <DialogContent>
         <ActivityForm onOk={onOk} onCancel={onCancel} activity={activity} />
       </DialogContent>

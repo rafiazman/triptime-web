@@ -251,20 +251,13 @@ export default class TripMap extends React.Component {
         onDragEnd={e => this.submitUpdatedActivity(e, a.id)}
       >
         <Popup>
-          <ActivityCard
-            onMap={true}
-            activity={a}
-            messageIfNoEvent={''}
-            tripId={this.props.tripID}
-          />
+          <ActivityCard onMap={true} activity={a} messageIfNoEvent={''} tripId={this.props.tripID} />
         </Popup>
       </Marker>
     ));
 
     let travels = this.state.travels;
-    let travelMarkers = travels.map((t, i) => (
-      <TravelMarkerPair travel={t} key={i} tripId={this.props.tripID} />
-    ));
+    let travelMarkers = travels.map((t, i) => <TravelMarkerPair travel={t} key={i} tripId={this.props.tripID} />);
 
     return (
       <>
@@ -312,9 +305,7 @@ export default class TripMap extends React.Component {
           </MarkerSplitter>
         </Map>
 
-        {(this.state.activityLoading || this.state.travelLoading) && (
-          <MapPlanLoading />
-        )}
+        {(this.state.activityLoading || this.state.travelLoading) && <MapPlanLoading />}
       </>
     );
   }

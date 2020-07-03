@@ -15,12 +15,8 @@ class LandingSlide extends React.Component {
 
     return (
       <div className={scrollStyle['slide']}>
-        <div
-          className={alignLeft ? styles.containerLeft : styles.containerRight}
-        >
-          <div
-            className={this.props.isTitleSlide ? styles.logo : styles.preview}
-          >
+        <div className={alignLeft ? styles.containerLeft : styles.containerRight}>
+          <div className={this.props.isTitleSlide ? styles.logo : styles.preview}>
             <img src={image} alt={title} />
           </div>
           <div className={alignLeft ? styles.introLeft : styles.introRight}>
