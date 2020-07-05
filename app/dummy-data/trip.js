@@ -5,8 +5,7 @@ import travels from './travel-between';
 const trip = {
   name: 'Around New Zealand',
   type: 'sightseeing',
-  description:
-    'Our 17 days trip around NZ, highlighting music party at Rotorua',
+  description: 'Our 17 days trip around NZ, highlighting music party at Rotorua',
   people: [
     {
       name: 'Alice',

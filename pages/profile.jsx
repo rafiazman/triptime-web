@@ -16,9 +16,7 @@ export default class Profile extends React.Component {
                 <Link href={'/timeline'}>
                   <a>Go to your trip</a>
                 </Link>
-                <p>
-                  Welcome to the Profile Page! Here is your profile information:
-                </p>
+                <p>Welcome to the Profile Page! Here is your profile information:</p>
                 <p>{JSON.stringify(currentUser)}</p>
               </div>
             );

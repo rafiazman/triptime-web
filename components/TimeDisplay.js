@@ -14,11 +14,7 @@ export default function TimeDisplay(props) {
     sameElse: 'dddd[,] DD/MM/YYYY [at] LT',
   };
 
-  return (
-    <span style={{ verticalAlign: 'middle' }}>
-      {moment(props.time).calendar(null, calendarFormat)}
-    </span>
-  );
+  return <span style={{ verticalAlign: 'middle' }}>{moment(props.time).calendar(null, calendarFormat)}</span>;
 }
 
 TimeDisplay.propTypes = {

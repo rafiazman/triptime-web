@@ -9,11 +9,7 @@ import styles from '../../css/homepage.module.css';
 import TripList from './TripList';
 import axios from 'axios';
 
-import {
-  faShoePrints,
-  faPen,
-  faClock,
-} from '@fortawesome/free-solid-svg-icons';
+import { faShoePrints, faPen, faClock } from '@fortawesome/free-solid-svg-icons';
 
 export default class Dashboard extends React.Component {
   constructor(props) {
@@ -36,27 +32,21 @@ export default class Dashboard extends React.Component {
         response => response.data,
         () => [],
       )
-      .then(trips =>
-        this.setState(() => ({ currentTrips: trips, currentLoading: false })),
-      );
+      .then(trips => this.setState(() => ({ currentTrips: trips, currentLoading: false })));
     axios
       .get(`${hostName}/api/trips/past`)
       .then(
         response => response.data,
         () => [],
       )
-      .then(trips =>
-        this.setState(() => ({ pastTrips: trips, pastLoading: false })),
-      );
+      .then(trips => this.setState(() => ({ pastTrips: trips, pastLoading: false })));
     axios
       .get(`${hostName}/api/trips/future`)
       .then(
         response => response.data,
         () => [],
       )
-      .then(trips =>
-        this.setState(() => ({ planningTrips: trips, planningLoading: false })),
-      );
+      .then(trips => this.setState(() => ({ planningTrips: trips, planningLoading: false })));
   }
 
   render() {
@@ -94,11 +84,7 @@ export default class Dashboard extends React.Component {
             icon={faClock}
             title='Your Memories: '
             tripInfoList={pastTrips}
-            displayIfNoTrip={
-              <h3>
-                No past trips yet. What memory will you create at TripTime?
-              </h3>
-            }
+            displayIfNoTrip={<h3>No past trips yet. What memory will you create at TripTime?</h3>}
             loading={this.state.pastLoading}
           />
         </div>

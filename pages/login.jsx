@@ -20,18 +20,9 @@ export default class Login extends React.Component {
 
     return (
       <>
-        {this.state.loading && (
-          <PageLoading message='Welcome! TripTime is logging you in 🙂' />
-        )}
+        {this.state.loading && <PageLoading message='Welcome! TripTime is logging you in 🙂' />}
         <AuthContext.Consumer>
-          {({
-            login,
-            handleEmailInput,
-            handleUserPassword,
-            currentUser,
-            errorMessage,
-            redirectTo,
-          }) => {
+          {({ login, handleEmailInput, handleUserPassword, currentUser, errorMessage, redirectTo }) => {
             if (currentUser) Router.push(redirectTo);
             else
               return (
@@ -62,11 +53,7 @@ export default class Login extends React.Component {
                       Password
                       <input type='password' onChange={handleUserPassword} />
                     </label>
-                    <input
-                      type='submit'
-                      value='Log in'
-                      className={styles.loginSubmit}
-                    />
+                    <input type='submit' value='Log in' className={styles.loginSubmit} />
                     <Link href='/signup'>
                       <a className={styles.registerLink}>Create New Account</a>
                     </Link>

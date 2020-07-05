@@ -47,12 +47,11 @@ function ActivityView(props) {
           </Text>
         )}
         <Text>
-          <GrayText>From:</GrayText> {formatTimeString(activity.start)}{' '}
-          <GrayText>To:</GrayText> {formatTimeString(activity.end)}
+          <GrayText>From:</GrayText> {formatTimeString(activity.start)} <GrayText>To:</GrayText>{' '}
+          {formatTimeString(activity.end)}
         </Text>
         <Text>
-          <GrayText>Location (Lat, Long):</GrayText>({activity.gps.lat},
-          {activity.gps.lng})
+          <GrayText>Location (Lat, Long):</GrayText>({activity.gps.lat},{activity.gps.lng})
         </Text>
       </View>
     </View>
@@ -72,8 +71,7 @@ function TravelView(props) {
         <GrayText>Travel by {travel.mode}</GrayText>
         <Text>From {formatTimeString(travel.from)}</Text>
         <Text>
-          <GrayText>From:</GrayText> {formatTimeString(travel.start)}{' '}
-          <GrayText>To:</GrayText>
+          <GrayText>From:</GrayText> {formatTimeString(travel.start)} <GrayText>To:</GrayText>
           {formatTimeString(travel.end)}
         </Text>
       </View>

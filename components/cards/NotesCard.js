@@ -21,9 +21,7 @@ export default class NotesCard extends React.Component {
       return (
         <div className={styles.notesOnMap}>
           {otherNotes.length < 1 ? (
-            <div className={styles.noNote}>
-              Your friends have not added notes to this activity yet...
-            </div>
+            <div className={styles.noNote}>Your friends have not added notes to this activity yet...</div>
           ) : (
             <div className={styles.friendNotes}>
               {otherNotes.map((note, i) => (
@@ -38,9 +36,7 @@ export default class NotesCard extends React.Component {
       return (
         <div className={styles.notesCard}>
           {otherNotes.length < 1 ? (
-            <div className={styles.noNote}>
-              Your friends have not added notes to this activity yet...
-            </div>
+            <div className={styles.noNote}>Your friends have not added notes to this activity yet...</div>
           ) : (
             <div className={styles.friendNotes}>
               {otherNotes.map((note, i) => (
@@ -69,18 +65,9 @@ class OneNote extends React.Component {
     return (
       <div className={styles.oneNote}>
         <div className={styles.authorField}>
-          <img
-            className='inline-avatar'
-            src={note.author.avatarPath}
-            alt={note.author.name}
-          />
+          <img className='inline-avatar' src={note.author.avatarPath} alt={note.author.name} />
           <span style={{ margin: '0 10px' }}>{note.author.name}</span>
-          <TimeAgo
-            date={note.updated}
-            minPeriod={10}
-            className={styles.timeUpdated}
-          />
-          :
+          <TimeAgo date={note.updated} minPeriod={10} className={styles.timeUpdated} />:
         </div>
 
         <div style={{ margin: '10px 0' }}>{note.content}</div>
@@ -108,17 +95,11 @@ function EditNote(props) {
           }}
         />
         {props.noteContent ? (
-          <button
-            className={styles.addNoteButton}
-            onClick={() => props.onCancel()}
-          >
+          <button className={styles.addNoteButton} onClick={() => props.onCancel()}>
             Cancel
           </button>
         ) : null}
-        <button
-          className={styles.addNoteButton}
-          onClick={() => props.noteHandler(noteInput)}
-        >
+        <button className={styles.addNoteButton} onClick={() => props.noteHandler(noteInput)}>
           Update my note
         </button>
       </div>
@@ -161,17 +142,9 @@ class MyNote extends React.Component {
       return (
         <div className={styles.myNoteContainer} style={{ marginLeft: '5px' }}>
           <div className='note-user-detail' style={{ marginTop: '5px' }}>
-            <img
-              className='inline-avatar'
-              src={this.props.me.avatarPath}
-              alt={this.props.me.name}
-            />
+            <img className='inline-avatar' src={this.props.me.avatarPath} alt={this.props.me.name} />
             <span style={{ margin: '5px 10px' }}>You</span>
-            <TimeAgo
-              date={this.state.myNote.updated}
-              minPeriod={10}
-              className={styles.timeUpdated}
-            />
+            <TimeAgo date={this.state.myNote.updated} minPeriod={10} className={styles.timeUpdated} />
             <Tooltip
               text='Edit Note'
               component={

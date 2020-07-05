@@ -7,10 +7,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCircle,
-  faChevronCircleLeft,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
 const linkNames = ['Timeline', 'Map', 'Calendar', 'Tools'];
 
@@ -28,17 +25,9 @@ class SideBar extends React.Component {
 
   render() {
     return (
-      <div
-        className={
-          this.state.sideBarPopped ? layoutStyles.aside : layoutStyles.foldAside
-        }
-      >
+      <div className={this.state.sideBarPopped ? layoutStyles.aside : layoutStyles.foldAside}>
         <div
-          className={
-            this.state.sideBarPopped
-              ? layoutStyles.toggleBarPopped
-              : layoutStyles.toggleSideBar
-          }
+          className={this.state.sideBarPopped ? layoutStyles.toggleBarPopped : layoutStyles.toggleSideBar}
           onClick={() => this.toggleSideBar()}
         >
           {this.state.sideBarPopped ? (

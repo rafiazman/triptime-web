@@ -149,10 +149,7 @@ export default function ActivityForm(props) {
                 required
                 ampm={false}
                 error={moment(activity.start).isBefore(moment())}
-                helperText={
-                  moment(activity.start).isBefore(moment()) &&
-                  'Planned activity should start in the future'
-                }
+                helperText={moment(activity.start).isBefore(moment()) && 'Planned activity should start in the future'}
                 showTodayButton
                 inputVariant='outlined'
                 value={activity.start}
@@ -175,8 +172,7 @@ export default function ActivityForm(props) {
                 ampm={false}
                 error={moment(activity.start).isAfter(moment(activity.end))}
                 helperText={
-                  moment(activity.start).isAfter(moment(activity.end)) &&
-                  'Activity should end after it starts!'
+                  moment(activity.start).isAfter(moment(activity.end)) && 'Activity should end after it starts!'
                 }
                 showTodayButton
                 inputVariant='outlined'
@@ -193,9 +189,7 @@ export default function ActivityForm(props) {
                 label='Description'
                 placeholder="Enter any additional info you'd like to share with your friends."
                 value={activity.description}
-                onChange={event =>
-                  handleChange({ description: event.target.value })
-                }
+                onChange={event => handleChange({ description: event.target.value })}
               />
             </Grid>
 

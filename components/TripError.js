@@ -12,20 +12,10 @@ const photoCredits = {
   400: 'Photo by Roberto Nickson on Unsplash',
 };
 export default function TripError({ status }) {
-  const imageCode = status
-    ? [400, 401, 404, 500].includes(status)
-      ? status
-      : status < 500
-      ? 400
-      : 500
-    : 500;
+  const imageCode = status ? ([400, 401, 404, 500].includes(status) ? status : status < 500 ? 400 : 500) : 500;
   return (
     <div className={styles.errorContainer}>
-      <img
-        src={`/img/cute-errors/${imageCode}.jpg`}
-        alt={''}
-        className={styles.photo}
-      />
+      <img src={`/img/cute-errors/${imageCode}.jpg`} alt={''} className={styles.photo} />
       <div className={styles.credit}>{photoCredits[imageCode]}</div>
       <div className={styles.messageContainer}>
         <h1>Error: {status}</h1>
@@ -41,10 +31,7 @@ export default function TripError({ status }) {
                 </Link>
                 if you have not.
               </li>
-              <li>
-                Contact a trip member to invite you if you are not a member of
-                this trip yet
-              </li>
+              <li>Contact a trip member to invite you if you are not a member of this trip yet</li>
             </ui>
           </>
         )}
@@ -60,13 +47,8 @@ export default function TripError({ status }) {
         {status >= 500 && (
           <div>
             <p>
-              We would appreciate it if you could let us know about this server
-              error through{' '}
-              <a
-                href={
-                  'https://github.com/tantigers/TripTime/issues/new?template=bug_report.md&title=ServerError'
-                }
-              >
+              We would appreciate it if you could let us know about this server error through{' '}
+              <a href={'https://github.com/tantigers/TripTime/issues/new?template=bug_report.md&title=ServerError'}>
                 GitHub
               </a>{' '}
               issues.

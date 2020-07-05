@@ -16,24 +16,12 @@ export default class ChatMessage extends React.Component {
     const isMine = this.props.isMine;
 
     return (
-      <div
-        className={
-          isMine ? styles.myChatMessageContainer : styles.chatMessageContainer
-        }
-      >
-        <img
-          src={message.author.avatarPath}
-          className={styles.chatAvatar}
-          alt=' '
-        />
+      <div className={isMine ? styles.myChatMessageContainer : styles.chatMessageContainer}>
+        <img src={message.author.avatarPath} className={styles.chatAvatar} alt=' ' />
         <div className={styles.messageInfo}>
           {isMine ? 'You' : message.author.name} · {messageTime}
         </div>
-        <div
-          className={isMine ? styles.myMessageContent : styles.messageContent}
-        >
-          {message.content}
-        </div>
+        <div className={isMine ? styles.myMessageContent : styles.messageContent}>{message.content}</div>
       </div>
     );
   }

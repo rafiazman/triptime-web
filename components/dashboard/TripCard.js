@@ -12,9 +12,7 @@ export default class TripCard extends React.Component {
     return (
       <div className={styles.card}>
         <h1>{this.props.tripName}</h1>
-        <div className={styles.alerts}>
-          {this.generateAlert(this.props.updated)}
-        </div>
+        <div className={styles.alerts}>{this.generateAlert(this.props.updated)}</div>
       </div>
     );
   }

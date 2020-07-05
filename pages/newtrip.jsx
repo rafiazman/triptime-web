@@ -41,9 +41,7 @@ export default function NewTrip() {
 
   return (
     <>
-      {tripCreating && (
-        <PageLoading message={'TripTime is creating the trip for you:)'} />
-      )}
+      {tripCreating && <PageLoading message={'TripTime is creating the trip for you:)'} />}
       <AuthContext.Consumer>
         {({ currentUser, setAnchor }) => {
           if (!currentUser)

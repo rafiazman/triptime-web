@@ -12,9 +12,7 @@ class PeopleList extends React.Component {
           <Tooltip
             key={index}
             text={person.name}
-            component={
-              <img src={person.avatarPath} alt='' className={'block-avatar'} />
-            }
+            component={<img src={person.avatarPath} alt='' className={'block-avatar'} />}
           />
         ))}
         {this.props.addComponent}

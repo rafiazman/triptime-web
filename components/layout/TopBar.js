@@ -51,9 +51,7 @@ class TopBar extends React.Component {
   render() {
     return (
       <>
-        {this.state.loggingOut && (
-          <PageLoading message='TripTime is logging you out. See you soon 🙂' />
-        )}
+        {this.state.loggingOut && <PageLoading message='TripTime is logging you out. See you soon 🙂' />}
         <AuthContext.Consumer>
           {({ currentUser, logout }) => (
             <header className={styles.bar}>
@@ -69,11 +67,7 @@ class TopBar extends React.Component {
                 {currentUser && (
                   <Link href='/'>
                     <a>
-                      <img
-                        src={currentUser.avatarPath}
-                        className={styles.avatar}
-                        alt={''}
-                      />
+                      <img src={currentUser.avatarPath} className={styles.avatar} alt={''} />
                     </a>
                   </Link>
                 )}
@@ -87,24 +81,20 @@ class TopBar extends React.Component {
                 </span>
                 {!this.state.fold && (
                   <div className={styles.dropBox}>
-                    {this.generateOptions(currentUser, logout).map(
-                      (option, index) => {
-                        return (
-                          <div key={index} className={styles.dropOption}>
-                            {' '}
-                            {option}
-                          </div>
-                        );
-                      },
-                    )}
+                    {this.generateOptions(currentUser, logout).map((option, index) => {
+                      return (
+                        <div key={index} className={styles.dropOption}>
+                          {' '}
+                          {option}
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
                 <span className={styles.full}>
-                  {this.generateOptions(currentUser, logout).map(
-                    (option, index) => {
-                      return <span key={index}>{option}</span>;
-                    },
-                  )}
+                  {this.generateOptions(currentUser, logout).map((option, index) => {
+                    return <span key={index}>{option}</span>;
+                  })}
                 </span>
               </span>
             </header>

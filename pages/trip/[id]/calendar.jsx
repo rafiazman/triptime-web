@@ -24,30 +24,20 @@ export default function Calendar(props) {
   return (
     <AuthContext.Consumer>
       {({ currentUser, setAnchor }) => (
-        <TripTeamLayout
-          user={currentUser}
-          activeLink={'Calendar'}
-          tripID={tripID}
-        >
+        <TripTeamLayout user={currentUser} activeLink={'Calendar'} tripID={tripID}>
           {currentUser ? (
             <div className={styles.calendarContainer}>
               {/*<CalendarSummary events={activities} />*/}
               <div style={{ marginTop: '4rem' }}>
                 <p>Hi {currentUser.name},</p>
-                <p>
-                  TripTime is working hard to deliver the calendar to you in our
-                  second release.
-                </p>
+                <p>TripTime is working hard to deliver the calendar to you in our second release.</p>
                 <p>Thank you for staying with us :)</p>
               </div>
             </div>
           ) : (
             <div className={'fit-center'}>
               <Link href={'/login'}>
-                <a onClick={() => setAnchor(`/trip/${tripID}/calendar`)}>
-                  {' '}
-                  Log in{' '}
-                </a>
+                <a onClick={() => setAnchor(`/trip/${tripID}/calendar`)}> Log in </a>
               </Link>
               to see the calendar
             </div>

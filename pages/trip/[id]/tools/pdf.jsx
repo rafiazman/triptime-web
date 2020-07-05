@@ -19,19 +19,8 @@ export default function Pdf({ tripID }) {
     <AuthContext.Consumer>
       {({ currentUser }) => (
         <TripContext.Consumer>
-          {({
-            trip,
-            activities,
-            travels,
-            travelsLoading,
-            activitiesLoading,
-            tripLoading,
-          }) => (
-            <TripTeamLayout
-              user={currentUser}
-              activeLink={'Tools'}
-              tripID={tripID}
-            >
+          {({ trip, activities, travels, travelsLoading, activitiesLoading, tripLoading }) => (
+            <TripTeamLayout user={currentUser} activeLink={'Tools'} tripID={tripID}>
               {activitiesLoading || travelsLoading || tripLoading ? (
                 <div className={styles.pdfLoading}>
                   <ReactLoading type='spinningBubbles' color='#ff4200' />
@@ -51,28 +40,16 @@ export default function Pdf({ tripID }) {
                     <span>
                       <FontAwesomeIcon icon={faDownload} />
                       <PDFDownloadLink
-                        document={
-                          <TripDocument
-                            activities={activities}
-                            travels={travels}
-                            trip={trip}
-                          />
-                        }
+                        document={<TripDocument activities={activities} travels={travels} trip={trip} />}
                         fileName={`${trip.name}.pdf`}
                       >
-                        {({ loading }) =>
-                          loading ? 'Loading document...' : 'Download File'
-                        }
+                        {({ loading }) => (loading ? 'Loading document...' : 'Download File')}
                       </PDFDownloadLink>
                     </span>
                   </div>
                   <div>
                     <PDFViewer width={'100%'} height={'100%'}>
-                      <TripDocument
-                        activities={activities}
-                        travels={travels}
-                        trip={trip}
-                      />
+                      <TripDocument activities={activities} travels={travels} trip={trip} />
                     </PDFViewer>
                   </div>
                 </div>

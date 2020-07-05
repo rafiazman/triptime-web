@@ -36,17 +36,11 @@ export default function DeleteActivityButton(props) {
         <Tooltip text='Delete' component={<FontAwesomeIcon icon={faTrash} />} />
       </span>
 
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='delete-activity-dialog'
-      >
+      <Dialog open={open} onClose={handleClose} aria-labelledby='delete-activity-dialog'>
         <DialogTitle id='delete-activity-dialog'>Delete Activity</DialogTitle>
 
         <DialogContent>
-          <DialogContentText>
-            Are you sure you want to delete this activity?
-          </DialogContentText>
+          <DialogContentText>Are you sure you want to delete this activity?</DialogContentText>
         </DialogContent>
 
         <DialogActions>

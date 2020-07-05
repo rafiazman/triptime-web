@@ -16,9 +16,7 @@ describe('Test Dashboard Loaded', () => {
   global.Date.parse = _Date.parse;
   global.Date.now = _Date.now;
   axios.get.mockResolvedValue({ data: myTripInfos });
-  const userHomePageRenderer = TestRenderer.create(
-    <Dashboard name={'Tester'} />,
-  );
+  const userHomePageRenderer = TestRenderer.create(<Dashboard name={'Tester'} />);
   test('Check if Dashboard renders three TripList', () => {
     expect(userHomePageRenderer.root.findAllByType(TripList).length).toBe(3);
   });

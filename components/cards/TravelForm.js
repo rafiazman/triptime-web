@@ -129,10 +129,7 @@ export default function TravelForm(props) {
                 required
                 ampm={false}
                 error={moment(travel.start).isBefore(moment())}
-                helperText={
-                  moment(travel.start).isBefore(moment()) &&
-                  'Planned travel should start in the future'
-                }
+                helperText={moment(travel.start).isBefore(moment()) && 'Planned travel should start in the future'}
                 showTodayButton
                 inputVariant='outlined'
                 value={travel.start}
@@ -154,10 +151,7 @@ export default function TravelForm(props) {
                 required
                 ampm={false}
                 error={moment(travel.start).isAfter(moment(travel.end))}
-                helperText={
-                  moment(travel.start).isAfter(moment(travel.end)) &&
-                  'Travel should end after it starts!'
-                }
+                helperText={moment(travel.start).isAfter(moment(travel.end)) && 'Travel should end after it starts!'}
                 showTodayButton
                 inputVariant='outlined'
                 value={travel.end}
@@ -173,9 +167,7 @@ export default function TravelForm(props) {
                 label='Description'
                 placeholder="Enter any additional info you'd like to share with your friends."
                 value={travel.description}
-                onChange={event =>
-                  handleChange({ description: event.target.value })
-                }
+                onChange={event => handleChange({ description: event.target.value })}
               />
             </Grid>
 

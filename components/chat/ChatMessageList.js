@@ -11,11 +11,7 @@ export default class ChatMessageList extends React.Component {
     return (
       <ScrollToBottom className={styles.messageListContainer}>
         {messages.map((message, index) => (
-          <ChatMessage
-            chatMessage={message}
-            key={index}
-            isMine={message.author.id === this.props.userID}
-          />
+          <ChatMessage chatMessage={message} key={index} isMine={message.author.id === this.props.userID} />
         ))}
       </ScrollToBottom>
     );

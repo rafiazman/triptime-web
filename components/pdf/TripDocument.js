@@ -51,15 +51,12 @@ export default class TripDocument extends React.Component {
                 color: '#ff4200',
               }}
             >
-              Presented to you by{' '}
-              <Link src={'http://triptime.cc'}>TripTime</Link>
+              Presented to you by <Link src={'http://triptime.cc'}>TripTime</Link>
             </Text>
           </View>
           <View style={{ borderBottom: '1px solid #555', marginBottom: 10 }}>
             <Text style={{ fontWeight: 700, fontSize: 22 }}>{trip.name}</Text>
-            <Text style={{ fontSize: 12, color: '#555' }}>
-              {trip.description}
-            </Text>
+            <Text style={{ fontSize: 12, color: '#555' }}>{trip.description}</Text>
           </View>
           {eventsByDay.map((record, index) => (
             <DayView dailyRecord={record} key={index} />

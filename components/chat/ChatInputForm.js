@@ -27,12 +27,7 @@ export default class ChatInputForm extends React.Component {
   render() {
     return (
       <form className={styles.chatInputForm}>
-        <input
-          type='text'
-          value={this.state.value}
-          className={styles.chatInput}
-          onChange={this.handleInputChange}
-        />
+        <input type='text' value={this.state.value} className={styles.chatInput} onChange={this.handleInputChange} />
         <button onClick={this.handleSubmit} disabled={!this.state.value}>
           Send
         </button>

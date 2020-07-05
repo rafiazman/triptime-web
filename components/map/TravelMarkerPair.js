@@ -21,9 +21,7 @@ class TravelMarkerPair extends React.Component {
   }
 
   toggleFocus(clickTo) {
-    clickTo
-      ? this.fromMarker.current.fireLeafletEvent('click')
-      : this.toMarker.current.fireLeafletEvent('click');
+    clickTo ? this.fromMarker.current.fireLeafletEvent('click') : this.toMarker.current.fireLeafletEvent('click');
   }
 
   submitUpdatedLocation(event, isFrom) {
@@ -66,11 +64,7 @@ class TravelMarkerPair extends React.Component {
           onDragEnd={e => this.submitUpdatedLocation(e, false)}
         >
           <Popup>
-            <TravelCard
-              travel={travel}
-              tripId={this.props.tripId}
-              onMap={true}
-            />
+            <TravelCard travel={travel} tripId={this.props.tripId} onMap={true} />
             <span className={styles.travelExplain}>
               Arrive here.
               <a href='#' onClick={() => this.toggleFocus(true)}>

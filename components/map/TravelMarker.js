@@ -43,10 +43,7 @@ export default function TravelMarker(props) {
     backgroundColor: `rgba(${rgbString}, 0.8)`,
   };
   return (
-    <span
-      className={styles.travelBubble}
-      style={props.isTo ? toStyle : fromStyle}
-    >
+    <span className={styles.travelBubble} style={props.isTo ? toStyle : fromStyle}>
       <FontAwesomeIcon icon={travelModeIcons[props.travelMode]} />
     </span>
   );

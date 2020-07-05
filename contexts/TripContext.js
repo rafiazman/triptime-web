@@ -34,10 +34,7 @@ const TripProvider = props => {
       .get(`${hostName}/api/trip/${tripID}`)
       .then(
         res => setTrip(res.data),
-        err =>
-          setErrorStatus(
-            err.response && err.response.status ? err.response.status : 500,
-          ),
+        err => setErrorStatus(err.response && err.response.status ? err.response.status : 500),
       )
       .then(() => {
         setTripLoading(false);
@@ -46,10 +43,7 @@ const TripProvider = props => {
       .get(`${hostName}/api/trip/${tripID}/activities`)
       .then(
         res => setActivities(res.data),
-        err =>
-          setErrorStatus(
-            err.response && err.response.status ? err.response.status : 500,
-          ),
+        err => setErrorStatus(err.response && err.response.status ? err.response.status : 500),
       )
       .then(() => {
         setActivitiesLoading(false);
@@ -58,10 +52,7 @@ const TripProvider = props => {
       .get(`${hostName}/api/trip/${tripID}/travels`)
       .then(
         res => setTravels(res.data),
-        err =>
-          setErrorStatus(
-            err.response && err.response.status ? err.response.status : 500,
-          ),
+        err => setErrorStatus(err.response && err.response.status ? err.response.status : 500),
       )
       .then(() => {
         setTravelsLoading(false);
@@ -79,9 +70,7 @@ const TripProvider = props => {
       .catch(err => {
         setDialogError({
           title: 'Travel Update Failed',
-          message: `Sorry, we failed to update the travel ${
-            travelPatch.name
-          } because: ${
+          message: `Sorry, we failed to update the travel ${travelPatch.name} because: ${
             err.response && err.response.data && err.response.data.message
               ? err.response.data.message
               : 'An internal error happened'
@@ -102,9 +91,7 @@ const TripProvider = props => {
       .catch(err => {
         setDialogError({
           title: 'Activity Update Failed',
-          message: `Sorry, we failed to update the activity ${
-            activityPatch.name
-          } because: ${
+          message: `Sorry, we failed to update the activity ${activityPatch.name} because: ${
             err.response && err.response.data && err.response.data.message
               ? err.response.data.message
               : 'An internal error happened'
@@ -116,12 +103,7 @@ const TripProvider = props => {
 
   async function handleJoin(eventType, eventID) {
     await axios.post(`${hostName}/api/${eventType}/${eventID}/join`).then(
-      res =>
-        setOneEvent(
-          eventType,
-          eventID,
-          eventType === ACTIVITY ? res.data.activity : res.data.travel,
-        ),
+      res => setOneEvent(eventType, eventID, eventType === ACTIVITY ? res.data.activity : res.data.travel),
       err => {
         setDialogError({
           title: 'Activity Join Failed',
@@ -139,9 +121,7 @@ const TripProvider = props => {
   async function deleteOneTravel(travelID) {
     await axios
       .delete(`${hostName}/api/travel/${travelID}`)
-      .then(() =>
-        setTravels(travels => travels.filter(travel => travel.id !== travelID)),
-      )
+      .then(() => setTravels(travels => travels.filter(travel => travel.id !== travelID)))
       .catch(err => {
         setDialogError({
           title: 'Travel Delete Failed',
@@ -159,11 +139,7 @@ const TripProvider = props => {
   async function deleteOneActivity(activityID) {
     await axios
       .delete(`${hostName}/api/activity/${activityID}`)
-      .then(() =>
-        setActivities(activities =>
-          activities.filter(activity => activity.id !== activityID),
-        ),
-      )
+      .then(() => setActivities(activities => activities.filter(activity => activity.id !== activityID)))
       .catch(err => {
         setDialogError({
           title: 'Activity Delete Failed',
@@ -180,15 +156,8 @@ const TripProvider = props => {
 
   function setOneEvent(eventType, eventID, newEvent) {
     if (eventType === ACTIVITY)
-      setActivities(activities =>
-        activities.map(activity =>
-          eventID === activity.id ? newEvent : activity,
-        ),
-      );
-    if (eventType === TRAVEL)
-      setTravels(travels =>
-        travels.map(travel => (eventID === travel.id ? newEvent : travel)),
-      );
+      setActivities(activities => activities.map(activity => (eventID === activity.id ? newEvent : activity)));
+    if (eventType === TRAVEL) setTravels(travels => travels.map(travel => (eventID === travel.id ? newEvent : travel)));
   }
 
   return (

@@ -47,9 +47,7 @@ export default class TripTeamLayout extends React.Component {
         <main>
           {this.props.children}
           <AuthContext.Consumer>
-            {({ currentUser }) =>
-              currentUser && <ChatBox tripId={this.props.tripID} />
-            }
+            {({ currentUser }) => currentUser && <ChatBox tripId={this.props.tripID} />}
           </AuthContext.Consumer>
         </main>
       </div>
