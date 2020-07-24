@@ -32,6 +32,11 @@ export default class MyApp extends App {
         <Head>
           <title>TripTime: Time for our next Adventure</title>
           <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+          <meta
+            name='image'
+            property='og:image'
+            content='https://triptime.cc/img/feature-preview/static-preview.jpg'
+          ></meta>
           <link
             href='https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600&display=swap'
             rel='stylesheet'
