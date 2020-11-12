@@ -5,7 +5,7 @@
 
 .slide {
     height: calc(88vh);
-    width: 100vw;
+    width: 100%;
     box-sizing: border-box;
     position: relative;
     outline: solid #eee 2px;

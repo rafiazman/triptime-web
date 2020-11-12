@@ -1,6 +1,6 @@
 /** @format */
 
-import TopBar from './TopBar';
+import TopBar from '../TopBar/TopBar';
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../../css/layout.module.css';

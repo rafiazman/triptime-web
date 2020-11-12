@@ -1,0 +1,18 @@
+$orange: #ff4200;
+$gray: #888;
+$secondaryText: #555555;
+$outerBg: #fefefe;
+$pageBg: #f5f5f5;
+$pageBorder: #eee;
+$boxShadow: #aaa;
+$disabledTripOrange: #ff7b4d;
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+button:focus {
+    outline-color: $orange;
+}

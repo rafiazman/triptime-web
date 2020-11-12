@@ -1,10 +1,11 @@
 /** @format */
 
 import React from 'react';
-import styles from '../../css/landing-preview.module.css';
-import scrollStyle from '../../css/snap-scroll.module.css';
+import formStyles from './landing-slide.module.scss';
+import styles from './landing-preview.module.css';
+import scrollStyle from './snap-scroll.module.css';
 import PropTypes from 'prop-types';
-import JoinUsForm from './JoinUsForm';
+import Router from "next/router";
 
 class LandingSlide extends React.Component {
   render() {
@@ -23,7 +24,27 @@ class LandingSlide extends React.Component {
             <div>
               <h1>{title}</h1>
               <div>{description}</div>
-              <JoinUsForm />
+
+              <form
+                className={formStyles.form}
+                onSubmit={e => {
+                  e.preventDefault();
+                  // checkEmailOccupied(userEmail);
+                  Router.push('/signup');
+                }}
+              >
+                <input
+                  type='email'
+                  placeholder='Enter your email'
+                  // onChange={handleEmailInput}
+                  // value={userEmail}
+                  required={true}
+                />
+                <button type='submit' className={styles.enabledLink}>
+                  Join Today - It&apos;s Free!
+                </button>
+              </form>
+
             </div>
           </div>
         </div>

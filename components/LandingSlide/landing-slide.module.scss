@@ -1,0 +1,35 @@
+$orange: #ff4200;
+$gray: #888;
+$secondaryText: #555555;
+$outerBg: #fefefe;
+$pageBg: #f5f5f5;
+$pageBorder: #eee;
+$boxShadow: #aaa;
+$disabledTripOrange: #ff7b4d;
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    height: 4.5rem;
+    justify-content: space-between;
+
+    input {
+        font-size: 1.25rem;
+        padding: 10px;
+        border: $orange solid 1px;
+        margin-bottom: 4px;
+
+        &:focus {
+            outline-color: $orange;
+        }
+    }
+
+    button {
+        cursor: pointer;
+        background-color: $orange;
+        font-size: 1.25rem;
+        color: white;
+        padding: 3px;
+    }
+}
