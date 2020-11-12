@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import SiteInfo from '../SiteInfo';
+import Footer from '../Footer/Footer';
 import Link from 'next/link';
 import Greeting from '../Greeting';
 import styles from '../../css/homepage.module.css';
@@ -88,7 +88,7 @@ export default class Dashboard extends React.Component {
             loading={this.state.pastLoading}
           />
         </div>
-        <SiteInfo />
+        <Footer />
       </div>
     );
   }

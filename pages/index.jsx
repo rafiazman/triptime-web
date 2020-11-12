@@ -1,24 +1,23 @@
 /** @format */
 import React from 'react';
-import VisitorLandingPage from '../components/landing/VisitorLandingPage';
+import { withSanctum } from "react-sanctum";
+import VisitorLandingPage from '../components/LandingSlide/VisitorLandingPage';
 import Dashboard from '../components/dashboard/Dashboard';
-import { AuthContext } from '../contexts/AuthContext';
 
-export default class Index extends React.Component {
-  static contextType = AuthContext;
-
+class Index extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    return (
-      <AuthContext.Consumer>
-        {({ currentUser }) => {
-          if (!currentUser) return <VisitorLandingPage />;
-          else return <Dashboard name={currentUser.name} />;
-        }}
-      </AuthContext.Consumer>
-    );
+    const { authenticated, user, signIn } = this.props;
+
+    if (authenticated) {
+      return <Dashboard name={user.name} />;
+    }
+
+    return <VisitorLandingPage />;
   }
 }
+
+export default withSanctum(Index);

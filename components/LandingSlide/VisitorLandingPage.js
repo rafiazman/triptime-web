@@ -2,13 +2,13 @@
 
 import React from 'react';
 import LandingSlide from './LandingSlide';
-import scrollStyle from '../../css/snap-scroll.module.css';
-import SiteInfo from '../SiteInfo';
+import scrollStyle from './snap-scroll.module.css';
+import Footer from '../Footer/Footer';
 
 class VisitorLandingPage extends React.Component {
   render() {
     return (
-      <div className={scrollStyle.container} dir='ltr'>
+      <div dir='ltr'>
         <LandingSlide
           alignLeft={true}
           image={'/img/bw_logo_trans.png'}
@@ -41,7 +41,7 @@ class VisitorLandingPage extends React.Component {
           isTitleSlide={false}
         />
 
-        <SiteInfo />
+        <Footer />
       </div>
     );
   }
