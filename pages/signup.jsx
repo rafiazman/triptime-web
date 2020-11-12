@@ -3,7 +3,7 @@
 import React from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import Router from 'next/router';
-import styles from '../css/auth.module.css';
+import styles from '../css/auth.module.scss';
 import PageLoading from '../components/PageLoading';
 import { DebounceInput } from 'react-debounce-input';
 

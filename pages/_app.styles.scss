@@ -13,6 +13,25 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 
-button:focus {
-    outline-color: $orange;
+button {
+    cursor: pointer;
+    background-color: $orange;
+    font-size: 1.25rem;
+    color: white;
+    padding: 3px;
+
+    &:focus {
+        outline-color: $orange;
+    }
+}
+
+input {
+    font-size: 1.25rem;
+    padding: 10px;
+    border: $orange solid 1px;
+    margin-bottom: 4px;
+
+    &:focus {
+        outline-color: $orange;
+    }
 }

@@ -1,68 +1,86 @@
 /** @format */
 import React from 'react';
-import { AuthContext } from '../contexts/AuthContext';
-import styles from '../css/auth.module.css';
-import Router from 'next/router';
+import styles from '../css/auth.module.scss';
+import { withRouter } from 'next/router';
 import PageLoading from '../components/PageLoading';
-import Greeting from '../components/Greeting';
 import Link from 'next/link';
+import { withSanctum } from "react-sanctum";
 
-export default class Login extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { loading: false };
+    this.state = {
+      loading: false,
+      email: "",
+      password: "",
+    };
+  }
+
+  onChangeEmail(value) {
+    this.setState({
+      email: value
+    });
+  }
+
+  onChangePassword(value) {
+    this.setState({
+      password: value
+    });
+  }
+
+  onSubmitLogin() {
+    const { setLoading } = this;
+    const { signIn, router } = this.props;
+    const { email, password } = this.state;
+    const rememberMe = true;
+
+    setLoading(true);
+
+    signIn(email, password, rememberMe)
+      .then(() => {
+        router.push('/');
+      })
+      .catch(() => {
+        window.alert("Invalid login credentials");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }
+
+  setLoading(value) {
+    this.setState(() => ({ loading: value }));
   }
 
   render() {
-    const setLoading = isLoading => {
-      this.setState(() => ({ loading: isLoading }));
-    };
+    const { loading } = this.state;
 
     return (
       <>
-        {this.state.loading && <PageLoading message='Welcome! TripTime is logging you in 🙂' />}
-        <AuthContext.Consumer>
-          {({ login, handleEmailInput, handleUserPassword, currentUser, errorMessage, redirectTo }) => {
-            if (currentUser) Router.push(redirectTo);
-            else
-              return (
-                <div className={styles.formContainer}>
-                  {errorMessage ? (
-                    <div className={'failed'}>
-                      <p>Sorry, we failed to log in for you because:</p>
-                      <p>{errorMessage}</p>
-                      <p>Please try again:</p>
-                    </div>
-                  ) : (
-                    <Greeting name='' />
-                  )}
+        {loading && <PageLoading message='Welcome! TripTime is logging you in 🙂' />}
 
-                  <form
-                    className={styles.loginForm}
-                    onSubmit={async e => {
-                      e.preventDefault();
-                      setLoading(true);
-                      await login();
-                      setLoading(false);
-                    }}
-                  >
-                    <label>
-                      Email <input type='email' onChange={handleEmailInput} />
-                    </label>
-                    <label>
-                      Password
-                      <input type='password' onChange={handleUserPassword} />
-                    </label>
-                    <input type='submit' value='Log in' className={styles.loginSubmit} />
-                    <Link href='/signup'>
-                      <a className={styles.registerLink}>Create New Account</a>
-                    </Link>
-                  </form>
-                </div>
-              );
-          }}
-        </AuthContext.Consumer>
+        <div className={styles.formContainer}>
+          <form className={styles.loginForm}>
+            <label>
+              Email <input type='email' onChange={(e) => this.onChangeEmail(e.target.value)} />
+            </label>
+            <label>
+              Password
+              <input type='password' onChange={(e) => this.onChangePassword(e.target.value)} />
+            </label>
+
+            <button type='button'
+                    className={styles.loginSubmit}
+                    onClick={() => this.onSubmitLogin()}>Login</button>
+
+            <Link href='/signup'>
+              <a className={styles.registerLink}>Create New Account</a>
+            </Link>
+          </form>
+        </div>
       </>
     );
   }
 }
+
+export default withSanctum(withRouter(Login));
