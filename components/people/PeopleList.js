@@ -3,6 +3,7 @@
 import React from 'react';
 import Tooltip from '../Tooltip';
 import PropTypes from 'prop-types';
+import Gravatar from 'react-gravatar';
 
 class PeopleList extends React.Component {
   render() {
@@ -12,7 +13,7 @@ class PeopleList extends React.Component {
           <Tooltip
             key={index}
             text={person.name}
-            component={<img src={person.avatarPath} alt='' className={'block-avatar'} />}
+            component={<Gravatar email={person.email} className={`block-avatar`} />}
           />
         ))}
         {this.props.addComponent}

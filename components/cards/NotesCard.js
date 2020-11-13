@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import Tooltip from '../Tooltip';
 import axios from 'axios';
+import Gravatar from 'react-gravatar';
 
 export default class NotesCard extends React.Component {
   render() {
@@ -65,7 +66,7 @@ class OneNote extends React.Component {
     return (
       <div className={styles.oneNote}>
         <div className={styles.authorField}>
-          <img className='inline-avatar' src={note.author.avatarPath} alt={note.author.name} />
+          <Gravatar email={note.author.email} className={`inline-avatar`} />
           <span style={{ margin: '0 10px' }}>{note.author.name}</span>
           <TimeAgo date={note.updated} minPeriod={10} className={styles.timeUpdated} />:
         </div>
@@ -130,6 +131,8 @@ class MyNote extends React.Component {
   }
 
   render() {
+    const { me } = this.props;
+
     if (!this.state.myNote || this.state.editing)
       return (
         <EditNote
@@ -142,7 +145,7 @@ class MyNote extends React.Component {
       return (
         <div className={styles.myNoteContainer} style={{ marginLeft: '5px' }}>
           <div className='note-user-detail' style={{ marginTop: '5px' }}>
-            <img className='inline-avatar' src={this.props.me.avatarPath} alt={this.props.me.name} />
+            <Gravatar email={me.email} className={`inline-avatar`} />
             <span style={{ margin: '5px 10px' }}>You</span>
             <TimeAgo date={this.state.myNote.updated} minPeriod={10} className={styles.timeUpdated} />
             <Tooltip

@@ -7,6 +7,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { AuthContext } from '../../contexts/AuthContext';
 import PageLoading from '../PageLoading';
 import withRouter from 'next/dist/client/with-router';
+import Gravatar from 'react-gravatar';
 
 class TopBar extends React.Component {
   constructor(props) {
@@ -67,7 +68,7 @@ class TopBar extends React.Component {
                 {currentUser && (
                   <Link href='/'>
                     <a>
-                      <img src={currentUser.avatarPath} className={styles.avatar} alt={''} />
+                      <Gravatar email={currentUser.email} className={styles.avatar} />
                     </a>
                   </Link>
                 )}

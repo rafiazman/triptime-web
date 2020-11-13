@@ -3,6 +3,7 @@ import React from 'react';
 import styles from '../../css/chat-box.module.css';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import Gravatar from 'react-gravatar';
 const messageTimeFormat = {
   sameDay: '[today ] LT',
   lastDay: '[yesterday ] LT',
@@ -17,7 +18,7 @@ export default class ChatMessage extends React.Component {
 
     return (
       <div className={isMine ? styles.myChatMessageContainer : styles.chatMessageContainer}>
-        <img src={message.author.avatarPath} className={styles.chatAvatar} alt=' ' />
+        <Gravatar email={message.author.email} className={styles.chatAvatar} />
         <div className={styles.messageInfo}>
           {isMine ? 'You' : message.author.name} · {messageTime}
         </div>
