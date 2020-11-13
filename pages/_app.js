@@ -34,8 +34,8 @@ export default class MyApp extends App {
     const sanctumConfig = {
       api_url: "https://api.triptime.cc",
       csrf_cookie_route: "api/csrf-cookie",
-      signin_route: "login",
-      signout_route: "logout",
+      signin_route: "api/login",
+      signout_route: "api/logout",
       user_object_route: "api/user",
     };
 
