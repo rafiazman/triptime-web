@@ -12,11 +12,11 @@ import './_app.styles.scss';
 // import '@fortawesome/fontawesome-free/css/all.css';
 // import 'react-day-picker/lib/style.css';
 
-import MainLayout from '../components/layout/MainLayout';
 import { TripProvider } from '../contexts/TripContext';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Sanctum } from "react-sanctum";
 import TopBar from "../components/TopBar/TopBar";
+import Footer from "../components/Footer/Footer";
 
 const theme = createMuiTheme({
   palette: {
@@ -60,6 +60,8 @@ export default class MyApp extends App {
             </ThemeProvider>
           </TripProvider>
         </Sanctum>
+
+        <Footer />
       </>
     );
   }
