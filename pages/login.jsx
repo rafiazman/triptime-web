@@ -14,6 +14,8 @@ class Login extends React.Component {
       email: "",
       password: "",
     };
+
+    this.setLoading = this.setLoading.bind(this);
   }
 
   onChangeEmail(value) {

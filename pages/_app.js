@@ -36,7 +36,7 @@ export default class MyApp extends App {
       csrf_cookie_route: "api/csrf-cookie",
       signin_route: "login",
       signout_route: "logout",
-      user_object_route: "user",
+      user_object_route: "api/user",
     };
 
     return (
@@ -52,16 +52,18 @@ export default class MyApp extends App {
           <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
         </Head>
 
-        <Sanctum config={sanctumConfig}>
-          <TripProvider>
-            <TopBar />
-            <ThemeProvider theme={theme}>
-              <Component {...pageProps} />
-            </ThemeProvider>
-          </TripProvider>
-        </Sanctum>
+        <div className="flex flex-column min-vh-100 justify-between">
+          <Sanctum config={sanctumConfig}>
+            <TripProvider>
+              <TopBar />
+              <ThemeProvider theme={theme}>
+                <Component {...pageProps} />
+              </ThemeProvider>
+            </TripProvider>
+          </Sanctum>
 
-        <Footer />
+          <Footer />
+        </div>
       </>
     );
   }
